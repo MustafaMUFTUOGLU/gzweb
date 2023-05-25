@@ -298,13 +298,13 @@ GZ3D.GZIface.prototype.onConnected = function()
 
   var visualUpdate = function(message)
   {
-    if (this.scene.getByName(message.name))
+    if (!this.scene.getByName(message.name))
     {
       // accept only collision visual msgs for now
-      // if (message.name.indexOf('COLLISION_VISUAL') < 0)
-      // {
-      //   return;
-      // }
+      if (message.name.indexOf('COLLISION_VISUAL') < 0)
+      {
+        return;
+      }
 
       // delay the add if parent not found, this array will checked in
       // modelUpdate function
